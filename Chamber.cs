@@ -54,7 +54,7 @@ namespace TsingtaoAdventureGame
                             Interact();
                         }
                     }
-                    //go right
+                    //go right//
                     else
                     {
                         if (Right != null)
