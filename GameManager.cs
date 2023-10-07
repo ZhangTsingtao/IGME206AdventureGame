@@ -34,10 +34,10 @@ namespace TsingtaoAdventureGame
         public static void Fight(HostileNPC a_hNPC) 
         {
             Console.WriteLine("");
-            Console.WriteLine("----Round Start----");
+            Console.WriteLine("---- Round Start ----");
             a_hNPC.Interact();
             Player.Interact(a_hNPC);
-            Console.WriteLine("----Round Ended----");
+            Console.WriteLine("---- Round Ended ----");
             Console.WriteLine("");
         }
         public static void Interact(FriendlyNPC a_fNPC)

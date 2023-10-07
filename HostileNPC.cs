@@ -8,10 +8,10 @@ namespace TsingtaoAdventureGame
 {
     public class HostileNPC : NPC
     {
-        public HostileNPC() { }
-        public HostileNPC(string a_sName, int a_nLevel) : base(a_sName, a_nLevel)
-        {
 
+        public HostileNPC() { }
+        public HostileNPC(string a_sName, string a_sBackStory, int a_nLevel) : base(a_sName, a_nLevel)
+        {
         }
 
         //polymorphism
@@ -22,7 +22,7 @@ namespace TsingtaoAdventureGame
             {
                 int damage = Player.Damage - m_nDefense;
                 m_nHP -= (Player.Damage - m_nDefense);
-                Console.WriteLine("Enemy is hurt by " + damage + "points");
+                Console.WriteLine("Enemy is hurt by " + damage + " points");
                 Console.WriteLine("Its HP is " +  m_nHP);
             }
             else

@@ -16,26 +16,23 @@
             Console.WriteLine("Hello, " + nameInput);
             Player.Name = nameInput;
 
-
-            //HostileNPC hostileNPC = new HostileNPC("monster", 1);
-
-            //while (Player.HP > 0)
-            //{
-            //    Console.WriteLine("Do you want to interact with it?");
-
-            //    if (GameManager.GetUserInput())
-            //    {
-            //        GameManager.Interact(hostileNPC);
-            //    }
-            //}
-
-            //Generate map, and also returns the last chamber, 
-            //if the player gets to the last chamber, the game ends
-
             Chamber rootChamber = GenerateMap();
             while (Player.CurretChamber != rootChamber)
             {
                 Player.CurretChamber.Interact();
+
+                if(Player.HP <= 0)
+                {
+                    Console.WriteLine("\n You can't proceed anymore, Game Over!");
+                    break;
+                }
+            }
+
+            if(Player.HP > 0)
+            {
+                Console.WriteLine("\n You've reached the door! " +
+                "\n You saw the sunlight brushing on your face" +
+                "\n You are free!");
             }
         }
 
@@ -73,7 +70,12 @@
             //c7.BackToOrigin();
 
             //add NPC to chamber
-            c1.ChamberNPC = new HostileNPC();
+            c1.ChamberNPC = new HostileNPC("SantasSon", 
+                "I'm son of Santa, oh no, it's Satan......\n" +
+                "I'm here to make sure you never step out of this hell",
+                55);
+            c2.ChamberNPC = new FriendlyNPC("Ciderella",
+                "I'm trapped in my glass shoes! ", 5);
 
             //return the destination, the end of the game
             return c7;
