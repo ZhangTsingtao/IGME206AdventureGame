@@ -18,22 +18,31 @@ namespace TsingtaoAdventureGame
         public override void Interact()
         {
             base.Interact();
-
-            Console.WriteLine("");
-            Console.WriteLine("I'm " + m_sName +" ,");
-            Console.WriteLine(m_sBackStory);
-
-            if (!m_bGivenXP) 
+            if (GameManager.GetUserInput(" ---'1' Talk; '0' Ignore"))
             {
+
                 Console.WriteLine("");
-                Player.LevelUp(GiveXP());
-                m_bGivenXP = true;
+                Console.WriteLine("I'm " + m_sName + " ,");
+                Console.WriteLine(m_sBackStory);
+
+                if (!m_bGivenXP)
+                {
+                    Console.WriteLine("");
+                    Player.LevelUp(GiveXP());
+                    m_bGivenXP = true;
+                }
+                else
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("This NPC has already given you Strength");
+                }
             }
             else
             {
-                Console.WriteLine("");
-                Console.WriteLine("This NPC has already given you Strength");
+                Console.WriteLine("You went past that figure");
+                return;
             }
+            
         }
     }
 }

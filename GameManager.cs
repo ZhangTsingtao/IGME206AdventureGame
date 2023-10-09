@@ -11,7 +11,7 @@ namespace TsingtaoAdventureGame
     {
         public static bool GetUserInput(string a_sPrompt)//return a true or false of user input
         {
-            //Console.WriteLine("Yes, type '1'; No, type '0'.");
+            Console.WriteLine(a_sPrompt);
 
             string m_sNumInput = "";
             m_sNumInput = Console.ReadLine();

@@ -24,7 +24,7 @@
                 if(Player.HP <= 0)
                 {
                     Console.WriteLine("\n You can't proceed anymore, Game Over!");
-                    break;
+                    return;
                 }
             }
 
@@ -33,6 +33,7 @@
                 Console.WriteLine("\n You've reached the door! " +
                 "\n You saw the sunlight brushing on your face" +
                 "\n You are free!");
+                return;
             }
         }
 
@@ -66,16 +67,18 @@
 
             Console.WriteLine("");
 
-            //Console.WriteLine("c7 Back to Origin");
-            //c7.BackToOrigin();
-
             //add NPC to chamber
             c1.ChamberNPC = new HostileNPC("SantasSon", 
                 "I'm son of Santa, oh no, it's Satan......\n" +
                 "I'm here to make sure you never step out of this hell",
-                55);
+                5);
             c2.ChamberNPC = new FriendlyNPC("Ciderella",
-                "I'm trapped in my glass shoes! ", 5);
+                "I'm trapped in my glass shoes! I give you power of beauty, help me!", 5);
+
+            //add Item
+            c2.Item = new Item("Pearl of tears",
+                "It glowed the light of a glass shoe",
+                2);
 
             //return the destination, the end of the game
             return c7;

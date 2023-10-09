@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TsingtaoAdventureGame
 {
-    //This file is dev log, for me or Almighty Audrey
+    //This file is dev log, for me and Almighty Audrey
 
     //To keep the game loop, I use 2 scripts: Chamber and Player, 
         //Game keeps looping until the Player.CurrentChamber is the destination

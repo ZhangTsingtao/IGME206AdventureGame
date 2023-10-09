@@ -15,13 +15,19 @@ namespace TsingtaoAdventureGame
 
         public static int ChamberCount = 0;
         public int ID;
+
         public NPC ChamberNPC;
+        public Item Item = null;
 
         public Chamber()
         {
             ID = ChamberCount;
             ChamberCount++;
             Console.WriteLine("ID: " + ID);
+        }
+        public Chamber (Item a_iItem)
+        {
+            this.Item = a_iItem;
         }
 
         public void Interact()
@@ -57,9 +63,11 @@ namespace TsingtaoAdventureGame
                     
                     while(ChamberNPC.HP > 0 && Player.HP > 0)
                     {
-                        Console.WriteLine(" ---'1' Fight; '0' Flee");
+                        
                         if (GameManager.GetUserInput(" ---'1' Fight; '0' Go Back"))
                         {
+                            //I should've written this in HostileNPC,
+                            //but I don't have enough time, sorry
                             Console.WriteLine("--------- Fight! ---------");
                             GameManager.Fight(ChamberNPC as HostileNPC);
 
@@ -86,30 +94,32 @@ namespace TsingtaoAdventureGame
                 //If already interacted, it will vary in Interact() function
                 else
                 { 
-                    Console.WriteLine("There's a friendly NPC");
+                    Console.WriteLine("There's a vague figure");
                     ChamberNPC.Interact();
-                    return true;
                 }
             }
 
             //A chamber without NPC
-            else 
+            if(ChamberNPC == null)
             { 
                 Console.WriteLine("No one's here");
-                return true;
             }
-            
+
+            if(Item != null)
+            {
+                Item.Interact();
+            }
+
+            return true;
         }
         public void ChoosePath()
         {
             //After the event is ended, choose the path
-            Console.WriteLine(" --- Type '1' Go Forward, '0' Backward");
             if (GameManager.GetUserInput(" ---Type '1' Go Forward, '0' Backward"))
             //forward
             {
                 if (Left != null || Right != null)
                 {
-                    Console.WriteLine(" --- Type '1' Go Left, '0' Right");
                     //go left
                     if (GameManager.GetUserInput(" --- Type '1' Go Left, '0' Right"))
                     {
@@ -199,7 +209,5 @@ namespace TsingtaoAdventureGame
             }
         }
 
-        
-        
     }
 }
