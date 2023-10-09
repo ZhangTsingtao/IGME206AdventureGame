@@ -12,4 +12,5 @@ namespace TsingtaoAdventureGame
         //Game keeps looping until the Player.CurrentChamber is the destination
         //Chamber.Interact() is the back bone to go through the game
         //All other events happen based on the Chamber
+        //
 }
