@@ -27,6 +27,7 @@ namespace TsingtaoAdventureGame
             {
                 Console.WriteLine("It's " + m_sName + ", " + m_sEffectArug);
                 Player.LevelUp(m_nLevel);
+                Player.Heal(m_nLevel);
             }
             else
             {

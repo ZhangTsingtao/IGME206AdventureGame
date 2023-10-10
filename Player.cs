@@ -11,8 +11,8 @@ namespace TsingtaoAdventureGame
         private static string m_sName = "Unamed";
         private static int m_nLevel = 0;
         private static int m_nHP = 100;
-        public static int Damage = 40;
-        private static int m_nDefense = 10;
+        public static int Damage = 15;
+        private static int m_nDefense = 0;
 
         public static Chamber CurretChamber;
 
@@ -25,6 +25,12 @@ namespace TsingtaoAdventureGame
             Damage += a_nAddUp;
             m_nDefense += a_nAddUp;
             Console.WriteLine("You upgraded to Level " +  m_nLevel + "!");
+        }
+        public static void Heal(int a_nAddUp)
+        {
+            m_nHP += a_nAddUp * 2;
+            Console.WriteLine("You are healed by " + a_nAddUp * 2 + "HP");
+            Console.WriteLine("Your current HP is " + m_nHP + "!");
         }
 
         public static void Interact(FriendlyNPC a_fNPC)

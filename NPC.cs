@@ -33,8 +33,9 @@ namespace TsingtaoAdventureGame
         public NPC(string a_sName, string a_sBackStory, int a_nLevel)
         {
             m_sName = a_sName;
-            m_nLevel = a_nLevel;
             m_sBackStory = a_sBackStory;
+            m_nLevel = a_nLevel;
+            
             Init();
         }
 
@@ -51,6 +52,10 @@ namespace TsingtaoAdventureGame
         {
             Console.WriteLine(" ");
             Console.WriteLine("Interact with " + m_sName);
+        }
+        public virtual void Speak()
+        {
+
         }
 
         public int GiveXP() 

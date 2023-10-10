@@ -60,10 +60,10 @@ namespace TsingtaoAdventureGame
                 if (ChamberNPC is HostileNPC)
                 {
                     Console.WriteLine("There's a hostile NPC, you can't skip them");
-                    
-                    while(ChamberNPC.HP > 0 && Player.HP > 0)
+
+                    ChamberNPC.Speak();
+                    while (ChamberNPC != null && ChamberNPC.HP > 0 && Player.HP > 0)
                     {
-                        
                         if (GameManager.GetUserInput(" ---'1' Fight; '0' Go Back"))
                         {
                             //I should've written this in HostileNPC,
@@ -76,9 +76,12 @@ namespace TsingtaoAdventureGame
                                 Console.WriteLine("Enemy is Defeated! You've won!");
                                 Player.LevelUp(ChamberNPC.GiveXP());
                                 ChamberNPC = null;
-                                return true;
                             }
-                            
+
+                            if(Player.HP <= 0)//dead
+                            {
+                                return false;
+                            }
                         }
                         else
                         {
@@ -87,7 +90,7 @@ namespace TsingtaoAdventureGame
                             return false;
                         }
                     }
-                    return false;
+                    
                 }
 
                 //Interact with Friendly NPC
@@ -108,6 +111,7 @@ namespace TsingtaoAdventureGame
             if(Item != null)
             {
                 Item.Interact();
+                Item = null;
             }
 
             return true;
@@ -129,7 +133,9 @@ namespace TsingtaoAdventureGame
                         }
                         else
                         {
+                            Console.WriteLine("");
                             Console.WriteLine("There's no way to the left");
+                            Console.WriteLine("");
                             Interact();
                         }
                     }
@@ -142,14 +148,18 @@ namespace TsingtaoAdventureGame
                         }
                         else
                         {
+                            Console.WriteLine("");
                             Console.WriteLine("There's no way to the right");
+                            Console.WriteLine("");
                             Interact();
                         }
                     }
                 }
                 else
                 {
-                    Console.WriteLine("No way ahead");
+                    Console.WriteLine("");
+                    Console.WriteLine("No way ahead, you can only go back");
+                    Console.WriteLine("");
                 }
             }
             else
@@ -161,7 +171,9 @@ namespace TsingtaoAdventureGame
                 }
                 else
                 {
+                    Console.WriteLine("");
                     Console.WriteLine("Can't go back anymore. This is the start");
+                    Console.WriteLine("");
                     Interact();
                 }
             }
