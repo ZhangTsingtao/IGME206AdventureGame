@@ -17,8 +17,8 @@
             Player.Name = nameInput;
             //Player.LevelUp(84); testing
 
-            Chamber rootChamber = GenerateMap();
-            while (Player.CurretChamber != rootChamber)
+            Chamber destination = GenerateMap();
+            while (Player.CurretChamber != destination)
             {
                 Player.CurretChamber.Interact();
 
